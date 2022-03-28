@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 const merge = require('./utils/merge');
 const env = process.env.NODE_ENV || 'development';
@@ -41,13 +41,13 @@ const config = {
 
   // mongo 数据库设置
   mongodb: {
-    db: 'mongodb://127.0.0.1:27017/wechat_spider'
+    db: 'mongodb://192.168.5.200:27017/wechat_spider'
   },
 
   // redis 设置
   redis: {
     port: 6379,
-    host: '127.0.0.1',
+    host: '192.168.5.200',
 
     // 存储抓取文章列表的 key 名称
     POST_LIST_KEY: 'wechat_spider:post_list',
@@ -67,7 +67,7 @@ const config = {
 
       // 跳转文章发布时间范围
       minTime: new Date('2020/1/1'),
-      maxTime: new Date('2021/1/1'),
+      maxTime: new Date('2023/1/1'),
 
       // 已经抓取过的文章是否需要再次抓取
       isCrawlExist: true,
@@ -78,7 +78,7 @@ const config = {
 
       // 抓取公众号 biz 范围 [string]
       // 为空表示不限制范围
-      targetBiz: [],
+      targetBiz: ['MzU5NDcyOTg4MA=='],
 
       // 是否保存微信文章内容
       // 内容占用很多空间，尤其是html形式
@@ -101,11 +101,11 @@ const config = {
       minTime: new Date('2020/1/1'),
 
       // 控制在此时间后已经抓取过的公众号本次就不用再抓取了
-      maxUpdatedAt: new Date('2021/1/1'),
+      maxUpdatedAt: new Date('2024/1/1'),
 
       // 抓取公众号 biz 范围 [string]
       // 为空表示不限制范围
-      targetBiz: [],
+      targetBiz: ['MzU5NDcyOTg4MA=='],
     },
 
     // 功能：是否抓取评论
