@@ -2,13 +2,10 @@
     git clone https://github.com/LeanFly/wechat_spider
 
 创建MongoDB
-    docker run -dit --name mongodb -v $PWD/:/data/db -p 27017:27017 mongo:latest
-进入创建的mongodb
-    docker exec -it mongodb mongo admin
+    docker run -dit --name mongodb -v $PWD/:/data/db -p 27017:27017 mongo:4.4.4
 
 创建Redis
-    docker run -dit --name redis -v $PWD/data:/data -p 6379:6379
-
+    docker run -dit --name redis -v $PWD/data:/data -p 6379:6379 redis
 
 修改config.js，生成自己的配置
     端口相关保持默认
@@ -19,7 +16,6 @@
     npm install
     npm start
     /wechat_spider/node_modules/brotli/build/encode.js第三行: if(!(a instanceof y)) throw a; 改成: if(!(a instanceof y)) console.log(a); 这样可以避免index.js进程崩溃
-
 
 添加WiFi代理
     Android：设置-WiFi选项-进入已连接的WiFi，修改-高级选项-代理-手动-填写ip和端口

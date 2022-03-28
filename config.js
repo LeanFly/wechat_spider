@@ -46,7 +46,7 @@ const config = {
 
   // redis 设置
   redis: {
-    port: 6379,
+    port: 6378,
     host: '192.168.5.200',
 
     // 存储抓取文章列表的 key 名称
@@ -78,7 +78,7 @@ const config = {
 
       // 抓取公众号 biz 范围 [string]
       // 为空表示不限制范围
-      targetBiz: ['MzU5NDcyOTg4MA=='],
+      targetBiz: ['MzAxOTA0MzE3Mg=='],
 
       // 是否保存微信文章内容
       // 内容占用很多空间，尤其是html形式
