@@ -39,6 +39,22 @@ MONGO_PATH=/data/mongo docker-compose up
 docker-compose down
 ```
 
+## 全Docker化部署
+```bash
+    部署MongoDB：docker run -dit --name mongodb -v $PWD/:/data/db -p 27017:27017 mongo:4.4.4
+    部署Redis：docker run -dit --name redis -v $PWD/data:/data -p 6379:6379 redis
+    修改config： 自定义内容请依次配置，比如：44行MongoDB数据修改成自己创建的MongoDB；49、50行的Redis数据修改成自己创建的Redis；69、70的文章发布时间范围；81行的公众号biz；87行的文章保存形式；101、104行的时间；108行公众号biz；131、132行MongoDB和Redis；
+    自己编译docker镜像：docker build -t xxx/yyy:tag .
+    使用已有镜像：docker pull leanfly/wechat_spider:latest
+    启动：docker run --name wechat_spider -v $PWD/config.js:/app/config.js -p 18101:8101 -p 18102:8102 -p 18104:8104 leanfly/wechat_spider
+    查看日志：docker logs -f wechat_spider
+    安装证书：浏览器访问 http://192.168.5.200:18102
+    配置代理：服务器-192.168.5.200，端口-18101
+    微信访问公众号链接，注意这里的biz需要自己配置：https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg4NzYxNTQzNw==&scene=124#wechat_redirect
+    点开一个详情文章，刷新，然后会看到自动开始刷新入库
+    访问web：http://192.168.5.200:18104
+```
+
 - `Dockerfile` 中已经设置了在 `Linux` 环境的 Docker 中添加根证书的操作步骤，所以接下来仅需在手机上安装 https 证书即可。
 - 最终手机上设置的代理 ip 还是需要以自己电脑上的 ip 为准，需忽略 Docker 实例中打印的 ip 地址
 - 可编辑 `Dockerfile` 和 `docker-compose.yml` 改变部署规则
